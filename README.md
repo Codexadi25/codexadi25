@@ -6,7 +6,7 @@
 [![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white)](https://instagram.com/aditya.sahu25.57)
 [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/adityasahu-dev/)
 
-🌱 I’m currently learning *MERN-Stack with AI integratin*
+🌱 I’m currently learning *MERN-Stack with AI integration*
 ---
 <table>
   <tr>
