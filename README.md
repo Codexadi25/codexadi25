@@ -12,7 +12,7 @@
   <tr>
     <td>
       <img src="https://github-readme-stats.vercel.app/api?username=CodexAdi25&theme=dark&hide_border=false&include_all_commits=false&count_private=true" alt="GitHub Stats"/><br><br>
-      <img src="https://github-readme-streak-stats.herokuapp.com/?user=infysumanta&theme=dark&hide_border=false" alt="GitHub Streak Stats"/>
+      <img src="https://github-readme-streak-stats.herokuapp.com/?user=codexadi25&theme=dark&hide_border=false" alt="GitHub Streak Stats"/>
     </td>
     <td rowspan="2">
       <img src="https://spotify-github-profile.kittinanx.com/api/view.svg?uid=31nqqchyrynsoi6bxfiuip5i5ywm&cover_image=true&theme=default&show_offline=true&background_color=121212&interchange=true&bar_color_cover=true" alt="Spotify Profile"/>
