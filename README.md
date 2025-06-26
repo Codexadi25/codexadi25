@@ -8,10 +8,8 @@
 
 🌱 I’m currently learning *MERN-Stack with AI integratin*
 
-![spotify-github-profile](https://spotify-github-profile.kittinanx.com/api/view.svg?uid=31nqqchyrynsoi6bxfiuip5i5ywm&redirect=true][https://spotify-github-profile.kittinanx.com/api/view.svg?uid=31nqqchyrynsoi6bxfiuip5i5ywm&cover_image=true&theme=default&show_offline=true&background_color=121212&interchange=true&bar_color_cover=true)
-
-| ![GitHub Stats](https://github-readme-stats.vercel.app/api?username=CodexAdi25&theme=dark&hide_border=false&include_all_commits=false&count_private=true)  | ![](https://github-readme-streak-stats.herokuapp.com/?user=infysumanta&theme=dark&hide_border=false)  |
-| ------------- | ------------- | 
+| ![GitHub Stats](https://github-readme-stats.vercel.app/api?username=CodexAdi25&theme=dark&hide_border=false&include_all_commits=false&count_private=true)  | ![](https://github-readme-streak-stats.herokuapp.com/?user=infysumanta&theme=dark&hide_border=false)  | ![spotify-github-profile](https://spotify-github-profile.kittinanx.com/api/view.svg?uid=31nqqchyrynsoi6bxfiuip5i5ywm&redirect=true][https://spotify-github-profile.kittinanx.com/api/view.svg?uid=31nqqchyrynsoi6bxfiuip5i5ywm&cover_image=true&theme=default&show_offline=true&background_color=121212&interchange=true&bar_color_cover=true)
+| ------------- | ------------- | ----------- |
 <!--  
 -🔭 I’m currently working on
 - 🌱 I’m currently learning ...
