@@ -11,7 +11,7 @@
 <table>
   <tr>
     <td>
-      <img src="https://github-readme-stats.vercel.app/api?username=CodexAdi25&theme=dark&hide_border=false&include_all_commits=false&count_private=true" alt="GitHub Stats"/><br><br>
+      <img src="https://github-readme-stats.vercel.app/api?username=CodexAdi25&theme=dark&hide_border=false&include_all_commits=false&count_private=true" alt="GitHub Stats"/></br>
       <img src="https://github-readme-streak-stats.herokuapp.com/?user=codexadi25&theme=dark&hide_border=false" alt="GitHub Streak Stats"/>
     </td>
     <td rowspan="2">
