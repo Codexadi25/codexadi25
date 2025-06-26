@@ -7,9 +7,19 @@
 [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/adityasahu-dev/)
 
 🌱 I’m currently learning *MERN-Stack with AI integratin*
-
-| ![GitHub Stats](https://github-readme-stats.vercel.app/api?username=CodexAdi25&theme=dark&hide_border=false&include_all_commits=false&count_private=true)  | ![](https://github-readme-streak-stats.herokuapp.com/?user=infysumanta&theme=dark&hide_border=false)  | ![spotify-github-profile](https://spotify-github-profile.kittinanx.com/api/view.svg?uid=31nqqchyrynsoi6bxfiuip5i5ywm&redirect=true][https://spotify-github-profile.kittinanx.com/api/view.svg?uid=31nqqchyrynsoi6bxfiuip5i5ywm&cover_image=true&theme=default&show_offline=true&background_color=121212&interchange=true&bar_color_cover=true)
-| ------------- | ------------- | ----------- |
+---
+<table>
+  <tr>
+    <td>
+      <img src="https://github-readme-stats.vercel.app/api?username=CodexAdi25&theme=dark&hide_border=false&include_all_commits=false&count_private=true" alt="GitHub Stats"/><br><br>
+      <img src="https://github-readme-streak-stats.herokuapp.com/?user=infysumanta&theme=dark&hide_border=false" alt="GitHub Streak Stats"/>
+    </td>
+    <td rowspan="2">
+      <img src="https://spotify-github-profile.kittinanx.com/api/view.svg?uid=31nqqchyrynsoi6bxfiuip5i5ywm&cover_image=true&theme=default&show_offline=true&background_color=121212&interchange=true&bar_color_cover=true" alt="Spotify Profile"/>
+    </td>
+  </tr>
+</table>
+---
 <!--  
 -🔭 I’m currently working on
 - 🌱 I’m currently learning ...
