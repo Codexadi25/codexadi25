@@ -8,7 +8,7 @@
 
 🌱 I’m currently learning *MERN-Stack with AI integration*
 ---
-| GitHub Stats & Streak ![Status](https://img.shields.io/badge/GitHub-active-brightgreen?style=for-the-badge&logo=dotnet&logoColor=white) | Spotify |
+| ![Status](https://img.shields.io/badge/GitHub-active-brightgreen?style=for-the-badge&logo=dotnet&logoColor=white) | |
 |-----------------------|-----------------|
 | ![GitHub Stats](https://github-readme-stats.vercel.app/api?username=CodexAdi25&theme=dark&hide_border=false&include_all_commits=false&count_private=true)<br>![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=codexadi25&theme=dark&hide_border=false) | ![Spotify Profile](https://spotify-github-profile.kittinanx.com/api/view.svg?uid=31nqqchyrynsoi6bxfiuip5i5ywm&cover_image=true&theme=default&show_offline=true&background_color=121212&interchange=true&bar_color_cover=true) |
 <!--  
