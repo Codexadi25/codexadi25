@@ -9,7 +9,7 @@
 🌱 I’m currently learning *MERN-Stack with AI integration*
 ---
 ![Status](https://img.shields.io/badge/GitHub-active-brightgreen?style=for-the-badge&logo=dotnet&logoColor=white)
-| ![GitHub Stats](https://github-readme-stats.vercel.app/api?username=CodexAdi25&theme=dark&hide_border=false&include_all_commits=false&count_private=true)[![GitHub Streak](https://streak-stats.demolab.com?user=codexadi25&theme=dark&border_radius=8&short_numbers=true&mode=weekly&border=07006F&background=45%2C091964%2C000000&stroke=FFFFFF&fire=00F8FF&ring=00DEE5&currStreakLabel=B8E5EB)](https://git.io/streak-stats) | ![Spotify Profile](https://spotify-github-profile.kittinanx.com/api/view.svg?uid=31nqqchyrynsoi6bxfiuip5i5ywm&cover_image=true&theme=default&show_offline=true&background_color=121212&interchange=true&bar_color_cover=true) |
+| ![GitHub Stats](https://github-readme-stats.vercel.app/api?username=CodexAdi25&theme=dark&hide_border=false&include_all_commits=false&count_private=true)|[![GitHub Streak](https://streak-stats.demolab.com?user=codexadi25&theme=dark&border_radius=8&short_numbers=true&mode=weekly&border=07006F&background=45%2C091964%2C000000&stroke=FFFFFF&fire=00F8FF&ring=00DEE5&currStreakLabel=B8E5EB)](https://git.io/streak-stats) | ![Spotify Profile](https://spotify-github-profile.kittinanx.com/api/view.svg?uid=31nqqchyrynsoi6bxfiuip5i5ywm&cover_image=true&theme=default&show_offline=true&background_color=121212&interchange=true&bar_color_cover=true) |
 | ----------- | -------- |
 
 <!--  
