@@ -10,8 +10,17 @@
 ---
 ![Status](https://img.shields.io/badge/GitHub-active-brightgreen?style=for-the-badge&logo=dotnet&logoColor=white)
 
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=CodexAdi25&theme=dark&hide_border=false&include_all_commits=false&count_private=true) <br> ![GitHub Streak](https://streak-stats.demolab.com?user=codexadi25&theme=dark&border_radius=4&short_numbers=true&mode=weekly&card_width=450&card_height=200&border=f0f0f0&background=45%2C091964%2C000000&stroke=FFFFFF&fire=00F8FF&ring=00DEE5&currStreakLabel=B8E5EB) | ![Spotify Profile](https://spotify-github-profile.kittinanx.com/api/view.svg?uid=31nqqchyrynsoi6bxfiuip5i5ywm&cover_image=true&theme=default&show_offline=true&background_color=121212&interchange=true&bar_color_cover=true)
-| ----- | ----- |
+<table>
+  <tr>
+    <td>
+      <img src="https://github-readme-stats.vercel.app/api?username=CodexAdi25&theme=dark&hide_border=false&include_all_commits=false&count_private=true" alt="GitHub Stats"/></br>
+      <img src="https://streak-stats.demolab.com?user=codexadi25&theme=dark&border_radius=4&short_numbers=true&mode=weekly&card_width=450&card_height=200&border=f0f0f0&background=45%2C091964%2C000000&stroke=FFFFFF&fire=00F8FF&ring=00DEE5&currStreakLabel=B8E5EB" alt="GitHub Streak Stats"/>
+    </td>
+    <td rowspan="2">
+      <img src="https://spotify-github-profile.kittinanx.com/api/view.svg?uid=31nqqchyrynsoi6bxfiuip5i5ywm&cover_image=true&theme=default&show_offline=true&background_color=121212&interchange=true&bar_color_cover=true" alt="Spotify Profile"/>
+    </td>
+  </tr>
+</table>
 
 <!--  
 -🔭 I’m currently working on
