@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Aditya Sahu | Developer Portfolio</title>
+<title>Aditya | Developer Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
@@ -409,6 +409,125 @@ h2.sec-title{
 .contrib-cell[data-level="3"]{background:rgba(67,233,123,.75)}
 .contrib-cell[data-level="4"]{background:rgba(67,233,123,1)}
 
+/* ═══════════════════════ FEATURED PROJECTS ═══════════════════════ */
+#featured{background:var(--bg2)}
+.featured-grid{
+  display:grid;grid-template-columns:1fr;gap:2rem;
+}
+.fp-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:16px;overflow:hidden;
+  transition:all .3s;position:relative;
+  display:grid;grid-template-columns:1fr 1fr;
+}
+.fp-card:nth-child(even){direction:rtl}
+.fp-card:nth-child(even)>*{direction:ltr}
+.fp-card:hover{
+  border-color:var(--border2);
+  box-shadow:0 20px 60px rgba(0,0,0,.4);
+  transform:translateY(-4px);
+}
+.fp-visual{
+  position:relative;overflow:hidden;
+  min-height:260px;
+  background:var(--bg3);
+}
+.fp-visual-inner{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:5rem;
+  background:var(--fp-grad,var(--grad));
+  opacity:.85;
+}
+.fp-visual-code{
+  position:absolute;inset:0;padding:1.5rem;
+  font-family:var(--mono);font-size:.6rem;line-height:1.8;
+  color:rgba(240,238,255,.35);overflow:hidden;pointer-events:none;
+  white-space:pre;
+}
+.fp-body{
+  padding:2rem 2rem 2rem;
+  display:flex;flex-direction:column;justify-content:center;
+  gap:1rem;
+}
+.fp-status{
+  display:inline-flex;align-items:center;gap:.4rem;
+  font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;
+  text-transform:uppercase;width:fit-content;
+  border-radius:100px;padding:.25rem .75rem;
+}
+.fp-status.live{
+  background:rgba(67,233,123,.1);border:1px solid rgba(67,233,123,.3);
+  color:var(--accent3);
+}
+.fp-status.live::before{
+  content:'';width:5px;height:5px;border-radius:50%;
+  background:var(--accent3);box-shadow:0 0 6px var(--accent3);
+  animation:pulse 1.5s infinite;
+}
+.fp-status.wip{
+  background:rgba(255,209,102,.08);border:1px solid rgba(255,209,102,.3);
+  color:var(--amber);
+}
+.fp-status.wip::before{
+  content:'⚙';font-size:.6rem;
+}
+.fp-name{
+  font-family:var(--display);font-weight:800;
+  font-size:1.5rem;letter-spacing:-.03em;
+  line-height:1.1;
+}
+.fp-tagline{
+  font-family:var(--mono);font-size:.68rem;
+  color:var(--accent);letter-spacing:.04em;
+}
+.fp-desc{
+  font-size:.82rem;color:var(--text2);line-height:1.85;
+}
+.fp-tech-row{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.25rem}
+.fp-tech{
+  font-family:var(--mono);font-size:.58rem;
+  background:var(--bg3);border:1px solid var(--border2);
+  border-radius:5px;padding:.22rem .55rem;color:var(--text3);
+  transition:all .2s;
+}
+.fp-tech:hover{border-color:var(--accent);color:var(--accent)}
+.fp-features{
+  display:flex;flex-direction:column;gap:.4rem;
+}
+.fp-feature{
+  display:flex;align-items:flex-start;gap:.5rem;
+  font-size:.78rem;color:var(--text2);
+}
+.fp-feature::before{
+  content:'▸';color:var(--accent);font-size:.6rem;
+  margin-top:.15rem;flex-shrink:0;
+}
+.fp-links{display:flex;gap:.65rem;flex-wrap:wrap;margin-top:.5rem}
+.fp-link{
+  display:inline-flex;align-items:center;gap:.4rem;
+  font-family:var(--mono);font-size:.65rem;font-weight:500;
+  padding:.4rem .9rem;border-radius:7px;
+  transition:all .2s;
+}
+.fp-link-gh{
+  background:var(--bg3);border:1px solid var(--border2);color:var(--text2);
+}
+.fp-link-gh:hover{border-color:var(--accent);color:var(--accent)}
+.fp-link-live{
+  background:var(--accent-dim);border:1px solid rgba(108,99,255,.3);
+  color:var(--accent);
+}
+.fp-link-live:hover{background:var(--accent);color:#fff}
+.fp-link svg{width:11px;height:11px;flex-shrink:0}
+
+@media(max-width:900px){
+  .fp-card{grid-template-columns:1fr}
+  .fp-card:nth-child(even){direction:ltr}
+  .fp-visual{min-height:180px}
+  .fp-body{padding:1.5rem}
+}
+
 /* ═══════════════════════ PROJECTS ═══════════════════════ */
 #projects{background:var(--bg)}
 .repos-top{
@@ -679,6 +798,7 @@ footer a:hover{color:var(--text)}
       <li><a href="#about"><span class="nav-ico">◎</span><span>About</span></a></li>
       <li><a href="#skills"><span class="nav-ico">◈</span><span>Skills</span></a></li>
       <li><a href="#activity"><span class="nav-ico">◻</span><span>Activity</span></a></li>
+      <li><a href="#featured"><span class="nav-ico">★</span><span>Featured</span></a></li>
       <li><a href="#projects"><span class="nav-ico">⊞</span><span>Projects</span></a></li>
       <li><a href="#education"><span class="nav-ico">◑</span><span>Education</span></a></li>
       <li><a href="#contact"><span class="nav-ico">◇</span><span>Contact</span></a></li>
@@ -855,6 +975,214 @@ footer a:hover{color:var(--text)}
         <div class="loading-state" style="padding:2rem">Fetching contribution data<span id="ldots2"></span></div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- FEATURED PROJECTS -->
+<section id="featured" class="section">
+  <div class="sec-eyebrow">Showcase</div>
+  <h2 class="sec-title">Featured Projects</h2>
+
+  <div class="featured-grid">
+
+    <!-- NEXLOG LOGISTICS -->
+    <div class="fp-card fade-up" style="--fp-grad:linear-gradient(135deg,#0f2027,#203a43,#2c5364)">
+      <div class="fp-visual">
+        <div class="fp-visual-inner" style="font-size:3.5rem;letter-spacing:-.02em;font-family:var(--display);font-weight:800;color:rgba(255,255,255,.15);background:linear-gradient(135deg,#0f2027,#203a43,#2c5364)">
+          NEX<br>LOG
+        </div>
+        <div class="fp-visual-code">// WebSocket live tracking
+const tracker = new WS(
+  `ws://nexlog.onrender.com`
+);
+tracker.on('location', (data) => {
+  map.updateMarker(data.driverId, {
+    lat: data.lat,
+    lng: data.lng,
+    eta: data.estimatedArrival
+  });
+  fleet.refreshStatus(data);
+});
+
+// RBAC middleware
+router.use('/admin',
+  authenticate, authorize(['admin','manager'])
+);
+// Fleet dispatch
+await Driver.autoAssign({
+  orderId, region, priority: 'urgent'
+});</div>
+      </div>
+      <div class="fp-body">
+        <span class="fp-status live">Live on Firebase</span>
+        <div>
+          <div class="fp-name">NEXLOG Logistics</div>
+          <div class="fp-tagline">B2B Fleet Management SaaS · Quick Commerce</div>
+        </div>
+        <p class="fp-desc">
+          A high-performance logistics platform built for modern delivery ecosystems. Provides end-to-end visibility across fleets with real-time WebSocket tracking, a Support Lifeline Dashboard, and granular role-based access for Admins, Managers, Agents, Delivery Partners, and Customers.
+        </p>
+        <div class="fp-features">
+          <div class="fp-feature">Live WebSocket geolocation with route visualization</div>
+          <div class="fp-feature">Crystal lifecycle timeline &amp; 4-pane support context view</div>
+          <div class="fp-feature">Auto &amp; manual driver dispatch with performance metrics</div>
+          <div class="fp-feature">RBAC — 5 role tiers, JWT auth, secure workspaces</div>
+        </div>
+        <div class="fp-tech-row">
+          <span class="fp-tech">React.js</span>
+          <span class="fp-tech">Node.js</span>
+          <span class="fp-tech">Express</span>
+          <span class="fp-tech">MongoDB</span>
+          <span class="fp-tech">WebSockets</span>
+          <span class="fp-tech">JWT</span>
+          <span class="fp-tech">Firebase Hosting</span>
+          <span class="fp-tech">Render</span>
+        </div>
+        <div class="fp-links">
+          <a href="https://github.com/Codexadi25/NEXLOG_Logistics" target="_blank" class="fp-link fp-link-gh">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            Source Code
+          </a>
+          <a href="https://nexloglogistics.web.app" target="_blank" class="fp-link fp-link-live">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Live Demo
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUPPORTHUB -->
+    <div class="fp-card fade-up" style="--fp-grad:linear-gradient(135deg,#1a0533,#2d1b69,#11998e)">
+      <div class="fp-visual">
+        <div class="fp-visual-inner" style="font-size:3rem;font-family:var(--display);font-weight:800;color:rgba(255,255,255,.13);background:linear-gradient(135deg,#1a0533,#2d1b69,#11998e)">
+          SUP<br>PORT<br>HUB
+        </div>
+        <div class="fp-visual-code">// Ticket lifecycle engine
+const ticket = await Ticket.create({
+  title, description, priority,
+  assignedTo: autoRoute(category),
+  tags: extractTags(description),
+});
+
+// Multi-tier access control
+const ACCESS = {
+  ADMIN:   ['*'],
+  AGENT:   ['tickets','users'],
+  VIEWER:  ['tickets:read'],
+};
+
+// Real-time notification
+io.to(ticket.assignedTo).emit(
+  'new_ticket', { ticket, urgency }
+);
+
+// Deep search across tickets
+Ticket.search({ q, filters,
+  dateRange, status, priority });</div>
+      </div>
+      <div class="fp-body">
+        <span class="fp-status live">Production Ready</span>
+        <div>
+          <div class="fp-name">SupportHub</div>
+          <div class="fp-tagline">Multi-Tier Customer Support Platform · RBAC</div>
+        </div>
+        <p class="fp-desc">
+          A full-featured customer support system with a complete ticket lifecycle engine. Features multi-tier role-based access control, real-time notifications, deep multi-field search, internal agent notes, and a rich admin dashboard — all built with Node.js, Express, and EJS templating.
+        </p>
+        <div class="fp-features">
+          <div class="fp-feature">Complete ticket lifecycle: open → assigned → resolved → closed</div>
+          <div class="fp-feature">Multi-tier RBAC: Admin, Agent, and Viewer roles</div>
+          <div class="fp-feature">Deep search with filters by status, priority &amp; date range</div>
+          <div class="fp-feature">Internal notes system &amp; quick action tags for agents</div>
+        </div>
+        <div class="fp-tech-row">
+          <span class="fp-tech">Node.js</span>
+          <span class="fp-tech">Express.js</span>
+          <span class="fp-tech">MongoDB</span>
+          <span class="fp-tech">EJS</span>
+          <span class="fp-tech">CSS</span>
+          <span class="fp-tech">JWT Auth</span>
+          <span class="fp-tech">Socket.io</span>
+        </div>
+        <div class="fp-links">
+          <a href="https://github.com/Codexadi25/SupportHub" target="_blank" class="fp-link fp-link-gh">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            Source Code
+          </a>
+          <a href="https://github.com/Codexadi25/SupportHub/blob/main/DOCUMENTATION.md" target="_blank" class="fp-link fp-link-live">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            Documentation
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- REVENUE OS -->
+    <div class="fp-card fade-up" style="--fp-grad:linear-gradient(135deg,#0a0a1a,#1a1040,#2d1b69)">
+      <div class="fp-visual">
+        <div class="fp-visual-inner" style="font-size:3rem;font-family:var(--display);font-weight:800;color:rgba(255,255,255,.12);background:linear-gradient(135deg,#0a0a1a,#1a1040,#2d1b69)">
+          REV<br>ENUE<br>OS
+        </div>
+        <div class="fp-visual-code">// Revenue intelligence pipeline
+interface RevenueStream {
+  id: string;
+  source: SourceType;
+  amount: number;
+  mrr: number;
+  arr: number;
+  churnRisk: 'low'|'medium'|'high';
+}
+
+// ML-powered churn prediction
+const prediction = await model.predict({
+  userId, usageMetrics, paymentHistory,
+  engagementScore, tenure
+});
+
+// Real-time dashboard aggregation
+const metrics = await aggregator.run({
+  period: 'MTD',
+  breakdown: ['product','region'],
+  compare: 'previous_period'
+});</div>
+      </div>
+      <div class="fp-body">
+        <span class="fp-status wip">In Active Development</span>
+        <div>
+          <div class="fp-name">Revenue OS</div>
+          <div class="fp-tagline">SaaS Revenue Intelligence Platform · TypeScript + Python</div>
+        </div>
+        <p class="fp-desc">
+          An ambitious, full-stack revenue operations platform for SaaS businesses. Tracks MRR, ARR, churn, and cohort performance with an AI-assisted analytics layer. Built with TypeScript on the frontend, Python microservices for data pipelines, and a multi-module dashboard architecture.
+        </p>
+        <div class="fp-features">
+          <div class="fp-feature">MRR / ARR / churn tracking with cohort breakdowns</div>
+          <div class="fp-feature">Python ML microservice for churn prediction &amp; risk scoring</div>
+          <div class="fp-feature">Multi-module dashboard: backend, frontend &amp; analytics layers</div>
+          <div class="fp-feature">PM2 process management &amp; production-ready ecosystem config</div>
+        </div>
+        <div class="fp-tech-row">
+          <span class="fp-tech">TypeScript</span>
+          <span class="fp-tech">Python</span>
+          <span class="fp-tech">Node.js</span>
+          <span class="fp-tech">React</span>
+          <span class="fp-tech">CSS</span>
+          <span class="fp-tech">PM2</span>
+          <span class="fp-tech">REST API</span>
+        </div>
+        <div class="fp-links">
+          <a href="https://github.com/Codexadi25/revenue_OS" target="_blank" class="fp-link fp-link-gh">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            Source Code
+          </a>
+          <a href="https://github.com/Codexadi25/revenue_OS/blob/main/Planing_Documentation.md" target="_blank" class="fp-link fp-link-live">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg>
+            Planning Docs
+          </a>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -1665,7 +1993,7 @@ function observeFade(){
   document.querySelectorAll('.fade-up:not(.in)').forEach(el=>io.observe(el));
 }
 function setActiveNav(){
-  const ids=['hero','about','skills','activity','projects','education','contact'];
+  const ids=['hero','about','skills','activity','featured','projects','education','contact'];
   const scrollY=window.scrollY+100;
   let active='hero';
   for(const id of ids){
