@@ -2802,7 +2802,12 @@
   <script>
     /* ═══════════════════════ CONFIG ═══════════════════════ */
     const CFG = {
+      name: "Aditya Sahu",
+      tagline: "Full-Stack Web Developer Developer",
       github: 'CodexAdi25',
+      edu1: 'Chhatrapati Shahu Ji Maharaj University',
+      edu2: 'Laughing Buddha Academy',
+      edu3: 'Raghuvansh Academy',
       whatsapp: '917985693955',
       whatsappMsg: "Hi Aditya! I saw your portfolio and would love to connect 👋",
       email: 'adityasahu.dev@gmail.com',
@@ -2918,21 +2923,21 @@
     function openAdminPanel() {
       const d = loadData();
       const s = id => document.getElementById(id);
-      s('adm-name').value = d.name || '';
+      s('adm-name').value = d.name || CFG.name;
       s('adm-role').value = d.role || '';
       s('adm-github').value = d.github || CFG.github;
       s('adm-tagline').value = d.tagline || '';
       s('adm-desc').value = d.desc || '';
-      s('adm-email').value = d.email || '';
+      s('adm-email').value = d.email || CFG.email;
       s('adm-wa').value = d.whatsapp || CFG.whatsapp;
-      s('adm-linkedin').value = d.linkedin || '';
-      s('adm-twitter').value = d.twitter || '';
-      s('adm-resume').value = d.resumeURL || '';
-      s('adm-edu1').value = d.edu1 || '';
-      s('adm-edu2').value = d.edu2 || '';
-      s('adm-edu3').value = d.edu3 || '';
-      s('adm-about1').value = d.about1 || '';
-      s('adm-about2').value = d.about2 || '';
+      s('adm-linkedin').value = d.linkedin || CFG.linkedin;
+      s('adm-twitter').value = d.twitter || CFG.twitter;
+      s('adm-resume').value = d.resumeURL || CFG.resumeURL;
+      s('adm-edu1').value = d.edu1 || CFG.edu1;
+      s('adm-edu2').value = d.edu2 || CFG.edu2;
+      s('adm-edu3').value = d.edu3 || CFG.edu3;
+      s('adm-about1').value = d.about1 || CFG.about1;
+      s('adm-about2').value = d.about2 || CFG.about2;
       document.getElementById('admin-modal').classList.add('open');
     }
     function closeAdmin() { document.getElementById('admin-modal').classList.remove('open'); }
