@@ -2125,11 +2125,13 @@
         </svg>
         Compile & Download PDF
       </button>
-      <!-- Dynamic LinkedIn connection status indicator -->
-      <div id="li-status-indicator" style="margin-top:0.50rem; display:flex; align-items:center; justify-content:center; gap:0.4rem; font-family:var(--mono); font-size:0.58rem; letter-spacing:0.06em; color:var(--text3); border:1px solid var(--border); border-radius:7px; padding:0.4rem 0.8rem; background:transparent; width:100%;">
-        <span class="status-dot" style="position:relative; display:inline-block; width:8px; height:8px; background:var(--accent); border-radius:50%; margin: 0; box-shadow: 0 0 6px var(--accent);"></span>
-        <span>LinkedIn: Connecting...</span>
-      </div>
+      <button class="admin-btn" onclick="openAdminModal()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="8" r="4" />
+          <path d="M20 21a8 8 0 10-16 0" />
+        </svg>
+        Admin Panel
+      </button>
       <div class="sidebar-divider" style="margin-top: 1rem; margin-bottom: 0.8rem;"></div>
       <div
         style="text-align:center; font-size:.58rem; color:var(--text3); font-family:var(--mono); line-height: 1.5; padding-bottom: 0.5rem;">
@@ -2212,34 +2214,6 @@
                 <span class="chip">Node.js</span>
                 <span class="chip">Git & GitHub</span>
                 <span class="chip">REST APIs</span>
-              </div>
-            </div>
-            
-            <!-- Dynamic LinkedIn & Professional Details Card -->
-            <div class="pro-details-card" style="margin-top: 1.8rem; background: var(--bg3); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
-              <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.8rem; border-bottom: 1px solid var(--border2); padding-bottom: 0.5rem;">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" style="color: var(--accent);">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>
-                </svg>
-                <h4 style="font-family: var(--display); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text);">Professional Profile (via LinkedIn API)</h4>
-              </div>
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; font-size: 0.78rem; font-family: var(--sans);">
-                <div>
-                  <span style="color: var(--text3); display: block; font-family: var(--mono); font-size: 0.58rem; text-transform: uppercase;">Headline</span>
-                  <strong id="li-headline" style="color: var(--text);">—</strong>
-                </div>
-                <div>
-                  <span style="color: var(--text3); display: block; font-family: var(--mono); font-size: 0.58rem; text-transform: uppercase;">Location</span>
-                  <strong id="li-location" style="color: var(--text);">—</strong>
-                </div>
-                <div>
-                  <span style="color: var(--text3); display: block; font-family: var(--mono); font-size: 0.58rem; text-transform: uppercase;">Date of Birth</span>
-                  <strong id="li-dob" style="color: var(--text);">—</strong>
-                </div>
-                <div>
-                  <span style="color: var(--text3); display: block; font-family: var(--mono); font-size: 0.58rem; text-transform: uppercase;">Languages</span>
-                  <strong id="li-languages" style="color: var(--text);">—</strong>
-                </div>
               </div>
             </div>
           </div>
@@ -2720,7 +2694,110 @@
   </div><!-- /layout -->
 
 
-  <!-- Modals removed as per direct dynamic auto-fetching request -->
+  <!-- ═══════════ ADMIN LOGIN MODAL ═══════════ -->
+  <div class="modal-bg" id="login-modal">
+    <div class="modal" style="max-width:360px">
+      <div class="modal-head">
+        <h3>Admin Login</h3>
+        <button class="modal-close" onclick="closeLoginModal()">✕</button>
+      </div>
+      <div class="login-form">
+        <div class="fg">
+          <label>Password</label>
+          <input type="password" id="admin-pw" placeholder="Enter admin password"
+            onkeydown="if(event.key==='Enter')tryLogin()" />
+        </div>
+        <div class="login-err" id="login-err"></div>
+        <button class="btn btn-primary" onclick="tryLogin()">Login</button>
+        <!-- <p style="font-family:var(--mono);font-size:.58rem;color:var(--text3);text-align:center">
+        Default password: <code style="color:var(--accent)">admin123</code><br>Change in CONFIG below.
+      </p> -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ ADMIN PANEL MODAL ═══════════ -->
+  <div class="modal-bg" id="admin-modal">
+    <div class="modal">
+      <div class="modal-head">
+        <h3>⚙️ Admin Panel</h3>
+        <button class="modal-close" onclick="closeAdmin()">✕</button>
+      </div>
+
+      <div class="modal-section">
+        <label>Display Name</label>
+        <input type="text" id="adm-name" placeholder="Your Name" />
+      </div>
+      <div class="modal-section">
+        <label>Role / Title (sidebar)</label>
+        <input type="text" id="adm-role" placeholder="FULL-STACK DEVELOPER" />
+      </div>
+      <div class="modal-section">
+        <label>GitHub Username</label>
+        <input type="text" id="adm-github" placeholder="CodexAdi25" />
+      </div>
+      <div class="modal-section">
+        <label>Hero Tagline</label>
+        <input type="text" id="adm-tagline" placeholder="Building for the open web" />
+      </div>
+      <div class="modal-section">
+        <label>Hero Description</label>
+        <textarea id="adm-desc" rows="3" placeholder="Your short bio…"></textarea>
+      </div>
+      <div class="modal-section">
+        <label>Email Address</label>
+        <input type="email" id="adm-email" placeholder="you@email.com" />
+      </div>
+      <div class="modal-section">
+        <label>WhatsApp Number (country code + number, no +)</label>
+        <input type="text" id="adm-wa" placeholder="91XXXXXXXXXX" />
+      </div>
+      <div class="modal-section">
+        <label>LinkedIn URL</label>
+        <input type="url" id="adm-linkedin" placeholder="https://linkedin.com/in/you" />
+      </div>
+      <div class="modal-section">
+        <label>Twitter / X URL</label>
+        <input type="url" id="adm-twitter" placeholder="https://x.com/you" />
+      </div>
+      <div class="modal-section">
+        <label>Resume .tex File (GitHub raw URL)</label>
+        <input type="url" id="adm-resume" placeholder="https://raw.githubusercontent.com/you/repo/main/resume.tex" />
+      </div>
+      <div class="modal-section">
+        <label>University Name (B.Tech)</label>
+        <input type="text" id="adm-edu1" placeholder="XYZ University, City" />
+      </div>
+      <div class="modal-section">
+        <label>School Name (12th)</label>
+        <input type="text" id="adm-edu2" placeholder="ABC School, City" />
+      </div>
+      <div class="modal-section">
+        <label>School Name (10th)</label>
+        <input type="text" id="adm-edu3" placeholder="ABC School, City" />
+      </div>
+      <div class="modal-section">
+        <label>About — Paragraph 1</label>
+        <textarea id="adm-about1" rows="3"></textarea>
+      </div>
+      <div class="modal-section">
+        <label>About — Paragraph 2</label>
+        <textarea id="adm-about2" rows="3"></textarea>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn btn-ghost" onclick="closeAdmin()">Cancel</button>
+        <button class="btn btn-primary" onclick="saveAdmin()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14">
+            <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z" />
+            <polyline points="17 21 17 13 7 13 7 21" />
+            <polyline points="7 3 7 8 15 8" />
+          </svg>
+          Save & Apply
+        </button>
+      </div>
+    </div>
+  </div>
 
   <script>
     /* ═══════════════════════ CONFIG ═══════════════════════ */
@@ -2764,257 +2841,123 @@
       { name: 'Open Source', value: 80, color: '#a8ff78' },
     ];
 
-    /* ═══════════════════════ AUTO-FETCH LINKEDIN & RESUME ═══════════════════════ */
-    async function autoFetchLinkedInAndResume() {
-      const statusEl = document.getElementById('li-status-indicator');
-      if (statusEl) {
-        statusEl.innerHTML = '<span class="status-dot" style="position:relative; display:inline-block; width:8px; height:8px; background:var(--accent); border-radius:50%; margin:0; box-shadow: 0 0 8px var(--accent);"></span> <span>LinkedIn: Connecting...</span>';
+    /* ═══════════════════════ STORAGE HELPERS ═══════════════════════ */
+    function loadData() {
+      try { return JSON.parse(localStorage.getItem('portfolio_data') || '{}'); }
+      catch (e) { return {}; }
+    }
+    function saveData(d) { localStorage.setItem('portfolio_data', JSON.stringify(d)); }
+
+    /* ═══════════════════════ APPLY DATA ═══════════════════════ */
+    function applyData(d) {
+      const s = id => document.getElementById(id);
+      if (d.name) {
+        s('sb-name').textContent = d.name;
+        s('hero-name-line1').textContent = d.name.split(' ')[0] || d.name;
+        s('code-name').textContent = d.name;
+        s('av-placeholder').textContent = (d.name[0] || 'A').toUpperCase();
       }
+      if (d.role) { s('sb-role').textContent = d.role; }
+      if (d.tagline) { s('hero-tagline').textContent = d.tagline; }
+      if (d.desc) { s('hero-desc').textContent = d.desc; }
+      if (d.github) {
+        const g = d.github;
+        s('hero-handle').textContent = g;
+        s('code-handle').textContent = g;
+        s('footer-handle').textContent = g;
+        s('gh-profile-label').textContent = `github.com/${g}`;
+        s('gh-profile-link').href = `https://github.com/${g}`;
+        s('footer-gh').href = `https://github.com/${g}`;
+        s('gh-soc').href = `https://github.com/${g}`;
+        s('cm-gh').href = `https://github.com/${g}`;
+        s('cm-gh-label').textContent = `github.com/${g}`;
+        CFG.github = g;
+      }
+      if (d.email) {
+        s('mail-soc').href = `mailto:${d.email}`;
+        s('cm-email').href = `mailto:${d.email}`;
+        s('cm-email-label').textContent = d.email;
+        CFG.email = d.email;
+      }
+      if (d.whatsapp) {
+        CFG.whatsapp = d.whatsapp;
+        const wa = `https://wa.me/${d.whatsapp}?text=${encodeURIComponent(CFG.whatsappMsg)}`;
+        s('wa-big').href = wa;
+      }
+      if (d.linkedin) { s('li-soc').href = d.linkedin; }
+      if (d.twitter) { s('tw-soc').href = d.twitter; }
+      if (d.resumeURL) { CFG.resumeURL = d.resumeURL; }
+      if (d.edu1) { s('edu-school-1').textContent = d.edu1; }
+      if (d.edu2) { s('edu-school-2').textContent = d.edu2; }
+      if (d.edu3) { s('edu-school-3').textContent = d.edu3; }
+      if (d.about1) { s('about-p1').innerHTML = d.about1; }
+      if (d.about2) { s('about-p2').innerHTML = d.about2; }
+      if (d.location) { s('hero-location').textContent = d.location; s('code-location').textContent = d.location; }
+    }
 
-      const linkedinUrl = CFG.linkedin || 'https://www.linkedin.com/in/adityasahu-dev1/';
-      const githubUrl = `https://github.com/${CFG.github}`;
+    /* ═══════════════════════ ADMIN PANEL ═══════════════════════ */
+    let adminAuthed = false;
 
-      let linkedinSuccess = false;
-      let fetchedDetails = {
-        name: CFG.name,
-        headline: CFG.tagline,
-        location: 'India 🇮🇳',
-        dob: '25 October 2004',
-        languages: 'English, Hindi',
-        edu1: CFG.edu1,
-        edu2: CFG.edu2,
-        edu3: CFG.edu3,
-        bio: 'Passionate MERN Stack developer crafts clean, highly scalable and automated software ecosystems.'
+    function openAdminModal() {
+      if (adminAuthed) { openAdminPanel(); return; }
+      document.getElementById('login-modal').classList.add('open');
+      setTimeout(() => document.getElementById('admin-pw').focus(), 100);
+    }
+    function closeLoginModal() {
+      document.getElementById('login-modal').classList.remove('open');
+      document.getElementById('admin-pw').value = '';
+      document.getElementById('login-err').textContent = '';
+    }
+    function tryLogin() {
+      const pw = document.getElementById('admin-pw').value;
+      if (pw === CFG.adminPass) {
+        adminAuthed = true;
+        closeLoginModal();
+        openAdminPanel();
+      } else {
+        document.getElementById('login-err').textContent = 'Incorrect password.';
+        document.getElementById('admin-pw').value = '';
+        document.getElementById('admin-pw').focus();
+      }
+    }
+    function openAdminPanel() {
+      const d = loadData();
+      const s = id => document.getElementById(id);
+      s('adm-name').value = d.name || CFG.name;
+      s('adm-role').value = d.role || '';
+      s('adm-github').value = d.github || CFG.github;
+      s('adm-tagline').value = d.tagline || '';
+      s('adm-desc').value = d.desc || '';
+      s('adm-email').value = d.email || CFG.email;
+      s('adm-wa').value = d.whatsapp || CFG.whatsapp;
+      s('adm-linkedin').value = d.linkedin || CFG.linkedin;
+      s('adm-twitter').value = d.twitter || CFG.twitter;
+      s('adm-resume').value = d.resumeURL || CFG.resumeURL;
+      s('adm-edu1').value = d.edu1 || CFG.edu1;
+      s('adm-edu2').value = d.edu2 || CFG.edu2;
+      s('adm-edu3').value = d.edu3 || CFG.edu3;
+      s('adm-about1').value = d.about1 || CFG.about1;
+      s('adm-about2').value = d.about2 || CFG.about2;
+      document.getElementById('admin-modal').classList.add('open');
+    }
+    function closeAdmin() { document.getElementById('admin-modal').classList.remove('open'); }
+    function saveAdmin() {
+      const s = id => document.getElementById(id).value.trim();
+      const d = {
+        name: s('adm-name'), role: s('adm-role'), github: s('adm-github'),
+        tagline: s('adm-tagline'), desc: s('adm-desc'), email: s('adm-email'),
+        whatsapp: s('adm-wa'), linkedin: s('adm-linkedin'), twitter: s('adm-twitter'),
+        resumeURL: s('adm-resume'),
+        edu1: s('adm-edu1'), edu2: s('adm-edu2'), edu3: s('adm-edu3'),
+        about1: s('adm-about1'), about2: s('adm-about2'),
       };
-
-      // 1. Fetch live LinkedIn data via resilient CORS proxies
-      const proxies = [
-        `https://api.allorigins.win/get?url=${encodeURIComponent(linkedinUrl)}`,
-        `https://corsproxy.io/?url=${encodeURIComponent(linkedinUrl)}`,
-        `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(linkedinUrl)}`
-      ];
-
-      for (let i = 0; i < proxies.length; i++) {
-        try {
-          console.log(`Auto-fetching LinkedIn via proxy ${i+1}/${proxies.length}...`);
-          const res = await fetch(proxies[i]);
-          if (res.ok) {
-            const data = await res.json();
-            const html = data.contents || data;
-            if (html && html.length > 200) {
-              const parser = new DOMParser();
-              const doc = parser.parseFromString(html, 'text/html');
-              
-              const titleTag = doc.querySelector('title')?.textContent || '';
-              const ogTitle = doc.querySelector('meta[property="og:title"]')?.getAttribute('content') || '';
-              const ogDesc = doc.querySelector('meta[property="og:description"]')?.getAttribute('content') || '';
-
-              let parsedName = '';
-              let parsedHeadline = '';
-
-              if (ogTitle) {
-                const parts = ogTitle.split(/ - | \| | \u2013 | \u2014 /);
-                parsedName = parts[0]?.trim();
-                parsedHeadline = parts[1]?.trim();
-              } else if (titleTag) {
-                const parts = titleTag.split(/ - | \| | \u2013 | \u2014 /);
-                parsedName = parts[0]?.trim();
-                parsedHeadline = parts[1]?.trim();
-              }
-
-              if (parsedName) fetchedDetails.name = parsedName.replace(/\s*\(.*\)/g, '').trim();
-              if (parsedHeadline) fetchedDetails.headline = parsedHeadline;
-              if (ogDesc) fetchedDetails.bio = ogDesc;
-
-              // Heuristically extract schools
-              const textContent = doc.body?.textContent || html;
-              const uniRegex = /([A-Za-z\s]+University[A-Za-z\s,]{0,30})/gi;
-              const foundSchools = [];
-              let m;
-              while ((m = uniRegex.exec(textContent)) !== null && foundSchools.length < 3) {
-                const uni = m[1].replace(/[\r\n\t]+/g, ' ').replace(/\s+/g, ' ').trim();
-                if (uni.length > 8 && !foundSchools.includes(uni)) foundSchools.push(uni);
-              }
-              if (foundSchools.length > 0) fetchedDetails.edu1 = foundSchools[0];
-              if (foundSchools.length > 1) fetchedDetails.edu2 = foundSchools[1];
-
-              linkedinSuccess = true;
-              break;
-            }
-          }
-        } catch (e) {
-          console.warn(`LinkedIn live proxy ${i+1} failed:`, e);
-        }
-      }
-
-      if (!linkedinSuccess) {
-        // Parse name from handle as fallback
-        const handleMatch = linkedinUrl.match(/in\/([a-zA-Z0-9_\-]+)/);
-        if (handleMatch) {
-          const handle = handleMatch[1];
-          const cleanName = handle.split('-')
-            .map(w => w.charAt(0).toUpperCase() + w.slice(1))
-            .join(' ')
-            .replace(/\d+/, '');
-          if (cleanName && cleanName.length > 3) {
-            fetchedDetails.name = cleanName;
-          }
-        }
-      }
-
-      // 2. Dynamic Local LaTeX Resume Sync (Bulletproof Fallback & Enrichment)
-      let tex = '';
-      try {
-        console.log('Fetching local Resume.tex for complete details...');
-        const res = await fetch('Resume.tex');
-        if (res.ok) {
-          tex = await res.text();
-        }
-      } catch (e) {
-        console.warn('Local Resume.tex fetch failed, checking remote URL...');
-      }
-
-      if (!tex && CFG.resumeURL) {
-        try {
-          const res = await fetch(CFG.resumeURL);
-          if (res.ok) {
-            tex = await res.text();
-          }
-        } catch (e) {
-          console.error(e);
-        }
-      }
-
-      if (tex) {
-        try {
-          // Parse Name from LaTeX if LinkedIn didn't provide
-          const nameMatch = tex.match(/{\\Huge\\s*\\scshape\\s*([^}]+)}/) || tex.match(/{\\Huge\\s*([^}]+)}/);
-          if (nameMatch) fetchedDetails.name = nameMatch[1].trim();
-
-          // Parse Role / Tagline from LaTeX
-          const headerBlock = tex.split('\\begin{center}')[1]?.split('\\end{center}')[0] || '';
-          if (headerBlock) {
-            const lines = headerBlock.split('\\\\').map(l => l.replace(/\[[^\]]+\]/g, '').trim()).filter(Boolean);
-            if (lines.length > 1) {
-              fetchedDetails.headline = lines[1].replace(/[\n\r]+/g, ' ').trim();
-            }
-          }
-
-          // Parse Contact info
-          const emailMatch = tex.match(/mailto:([^}]+)/);
-          if (emailMatch) CFG.email = emailMatch[1].trim();
-
-          const phoneMatch = tex.match(/tel:([^}]+)/) || tex.match(/\\faPhone[^\d\+]*([\+\d\s]+)/);
-          if (phoneMatch) CFG.whatsapp = phoneMatch[1].replace(/[^\d]/g, '').trim();
-
-          // Parse Education
-          const eduBlocks = [];
-          const eduRegex = /\\textbf\{([^\}]+)\}\s*\\hfill\s*\\textit\{([^\}]+)\}/g;
-          let match;
-          while ((match = eduRegex.exec(tex)) !== null) {
-            eduBlocks.push({ school: match[1].trim(), degree: match[2].trim() });
-          }
-          if (eduBlocks.length > 0) fetchedDetails.edu1 = eduBlocks[0].school;
-          if (eduBlocks.length > 1) fetchedDetails.edu2 = eduBlocks[1].school;
-          if (eduBlocks.length > 2) fetchedDetails.edu3 = eduBlocks[2].school;
-
-          // Parse DOB and Languages
-          const dobMatch = tex.match(/\\textbf\{DOB:\}\s*&\s*([^\\\n]+)/) || tex.match(/DOB[^\w]*([0-9a-zA-Z\s]+)/i);
-          if (dobMatch) fetchedDetails.dob = dobMatch[1].trim().replace(/[\{\}]/g, '');
-
-          const langMatch = tex.match(/\\textbf\{Languages:\}\s*&\s*([^\\\n]+)/) || tex.match(/Languages[^\w]*([0-9a-zA-Z\s,]+)/i);
-          if (langMatch) fetchedDetails.languages = langMatch[1].trim().replace(/[\{\}]/g, '');
-
-          // Parse Summary bio
-          const overviewSection = tex.split(/\\section\*\{Overview\}/i)[1] || tex.split(/\\section\*\{Summary\}/i)[1];
-          if (overviewSection) {
-            const overviewText = overviewSection.split(/\\section/)[0]
-              .replace(/\\vspace\{[^}]+\}/g, '')
-              .replace(/\\setstretch\{[^}]+\}/g, '')
-              .replace(/[\n\r]+/g, ' ')
-              .trim();
-            if (overviewText) fetchedDetails.bio = overviewText;
-          }
-        } catch (err) {
-          console.error('LaTeX parsing error:', err);
-        }
-      }
-
-      // 3. Plot Details onto the UI
-      const s = (id, text) => {
-        const el = document.getElementById(id);
-        if (el) el.textContent = text;
-      };
-
-      // Sidebar & Header Name/Role
-      s('sb-name', fetchedDetails.name);
-      s('sb-role', fetchedDetails.headline);
-      s('hero-name-line1', fetchedDetails.name.split(' ')[0] || fetchedDetails.name);
-      s('hero-name-line2', fetchedDetails.name.split(' ').slice(1).join(' ') || fetchedDetails.headline);
-      s('code-name', fetchedDetails.name);
-      const avPlaceholder = document.getElementById('av-placeholder');
-      if (avPlaceholder) avPlaceholder.textContent = (fetchedDetails.name[0] || 'A').toUpperCase();
-
-      // Hero Tagline, Description & Location
-      s('hero-tagline', fetchedDetails.headline);
-      s('hero-desc', fetchedDetails.bio);
-      s('hero-location', fetchedDetails.location);
-      s('code-location', fetchedDetails.location);
-
-      // About me paragraphs
-      const p1 = document.getElementById('about-p1');
-      if (p1) p1.innerHTML = `<strong>Hey, I'm ${fetchedDetails.name.split(' ')[0]}</strong> — a passionate engineer focused on automated solutions, backend microservices, and AI integrations. I start each project with curiosity and commit to crafting clean, maintainable systems.`;
-      
-      const p2 = document.getElementById('about-p2');
-      if (p2) p2.innerHTML = fetchedDetails.bio;
-
-      // Professional Identity Card details
-      s('li-headline', fetchedDetails.headline);
-      s('li-location', fetchedDetails.location);
-      s('li-dob', fetchedDetails.dob);
-      s('li-languages', fetchedDetails.languages);
-
-      // Education slots
-      s('edu-school-1', fetchedDetails.edu1);
-      s('edu-school-2', fetchedDetails.edu2);
-      s('edu-school-3', fetchedDetails.edu3);
-
-      // Update configuration variables so other features use them
-      CFG.name = fetchedDetails.name;
-      CFG.tagline = fetchedDetails.headline;
-      CFG.edu1 = fetchedDetails.edu1;
-      CFG.edu2 = fetchedDetails.edu2;
-      CFG.edu3 = fetchedDetails.edu3;
-
-      // GitHub handles update
-      s('footer-handle', CFG.github);
-      s('code-handle', CFG.github);
-      s('hero-handle', CFG.github);
-
-      // Social URLs & actions
-      const liSoc = document.getElementById('li-soc');
-      if (liSoc) liSoc.href = linkedinUrl;
-
-      const ghSoc = document.getElementById('gh-soc');
-      if (ghSoc) ghSoc.href = githubUrl;
-
-      const waBig = document.getElementById('wa-big');
-      if (waBig) waBig.href = `https://wa.me/${CFG.whatsapp}?text=${encodeURIComponent(CFG.whatsappMsg)}`;
-
-      const mailSoc = document.getElementById('mail-soc');
-      if (mailSoc) mailSoc.href = `mailto:${CFG.email}`;
-
-      const cmEmail = document.getElementById('cm-email');
-      if (cmEmail) {
-        cmEmail.href = `mailto:${CFG.email}`;
-        const cmEmailLabel = document.getElementById('cm-email-label');
-        if (cmEmailLabel) cmEmailLabel.textContent = CFG.email;
-      }
-
-      // Success status indicator
-      if (statusEl) {
-        statusEl.innerHTML = '<span class="status-dot" style="position:relative; display:inline-block; width:8px; height:8px; background:var(--accent3); border-radius:50%; margin:0; box-shadow: 0 0 8px var(--accent3);"></span> <span>LinkedIn: Synchronized</span>';
-      }
+      saveData(d);
+      applyData(d);
+      closeAdmin();
+      // Re-fetch GitHub with possibly new username
+      allRepos = []; shown = 6;
+      fetchGH();
+      fetchContributions();
     }
 
     /* ═══════════════════════ RESUME COMPILATION & DOWNLOAD ═══════════════════════ */
@@ -3270,26 +3213,18 @@ Motivated and self-driven BCA student with practical experience building MERN St
 
       } catch (error) {
         console.error('LaTeX compilation failed:', error);
-        alert('LaTeX compilation failed.\n\nDetails: ' + error.message + '\n\nWe will download the precompiled Resume_Updated.pdf stored on the master branch.');
+        alert('LaTeX compilation failed.\n\nDetails: ' + error.message + '\n\nWe will download the raw .tex file as a backup.');
 
-        try {
-          const pdfUrl = `https://raw.githubusercontent.com/${CFG.github}/codexadi25/master/Resume_Updated.pdf`;
-          const a = document.createElement('a');
-          a.href = pdfUrl;
-          a.download = 'Resume_Updated.pdf';
-          a.target = '_blank';
-          document.body.appendChild(a);
-          a.click();
-          document.body.removeChild(a);
-        } catch (dlErr) {
-          console.error('Master branch download failed, trying local backup:', dlErr);
-          const a = document.createElement('a');
-          a.href = 'Resume_Updated.pdf';
-          a.download = 'Resume_Updated.pdf';
-          document.body.appendChild(a);
-          a.click();
-          document.body.removeChild(a);
-        }
+        // Fallback: download raw .tex file
+        const texBlob = new Blob([texContent], { type: 'text/plain' });
+        const dlUrl = URL.createObjectURL(texBlob);
+        const a = document.createElement('a');
+        a.href = dlUrl;
+        a.download = 'Resume.tex';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(dlUrl);
 
         setButtonsLoading(false);
       }
@@ -3737,6 +3672,10 @@ Motivated and self-driven BCA student with practical experience building MERN St
     // Footer year
     document.getElementById('footer-yr').textContent = new Date().getFullYear();
 
+    // Load saved data
+    const savedData = loadData();
+    if (Object.keys(savedData).length > 0) applyData(savedData);
+
     // Init GitHub links
     const ghUrl = `https://github.com/${CFG.github}`;
     document.getElementById('gh-soc').href = ghUrl;
@@ -3750,8 +3689,7 @@ Motivated and self-driven BCA student with practical experience building MERN St
     const waUrl = `https://wa.me/${CFG.whatsapp}?text=${encodeURIComponent(CFG.whatsappMsg)}`;
     document.getElementById('wa-big').href = waUrl;
 
-    // Fetch dynamic data automatically on page load
-    autoFetchLinkedInAndResume();
+    // Fetch data
     fetchGH();
     fetchContributions();
 
