@@ -54,7 +54,8 @@ body::before{
 }
 
 /* ═══════════════════════ LAYOUT ═══════════════════════ */
-#layout{display:flex;height:100vh;overflow:hidden}
+#layout{display:flex;min-height:100vh}
+
 
 /* ═══════════════════════ SIDEBAR ═══════════════════════ */
 #sidebar{
@@ -200,27 +201,15 @@ nav ul a span:last-child{position:relative;z-index:1}
 .admin-btn svg{width:11px;height:11px}
 
 /* ═══════════════════════ MAIN ═══════════════════════ */
-#main{margin-left:var(--sidebar);flex:1;height:100vh;overflow:hidden;position:relative}
+#main{margin-left:var(--sidebar);flex:1;min-height:100vh}
 
 /* ═══════════════════════ HERO ═══════════════════════ */
 #hero{
-  position:relative;overflow-y:auto;
-  display:none;height:100vh;
+  position:relative;overflow:hidden;
+  min-height:100vh;
+  display:flex;flex-direction:column;justify-content:center;
   padding:5rem 4.5rem 4rem;
-  border-bottom:none;
-  animation:paneFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  scrollbar-width:thin;
-  scrollbar-color:var(--border2) transparent;
-}
-#hero::-webkit-scrollbar{width:5px}
-#hero::-webkit-scrollbar-track{background:transparent}
-#hero::-webkit-scrollbar-thumb{background:var(--border2);border-radius:4px}
-#hero::-webkit-scrollbar-thumb:hover{background:var(--accent)}
-
-#hero.active-pane{
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
+  border-bottom:1px solid var(--border);
 }
 .hero-mesh{
   position:absolute;inset:0;pointer-events:none;
@@ -306,25 +295,8 @@ h1.hero-title .line2{
 .btn svg{width:14px;height:14px;flex-shrink:0}
 
 /* ═══════════════════════ SECTIONS ═══════════════════════ */
-.section{
-  display:none;height:100vh;overflow-y:auto;
-  padding:4rem 4.5rem;border-bottom:none;
-  scroll-behavior:smooth;
-  animation:paneFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  scrollbar-width:thin;
-  scrollbar-color:var(--border2) transparent;
-}
-.section::-webkit-scrollbar{width:5px}
-.section::-webkit-scrollbar-track{background:transparent}
-.section::-webkit-scrollbar-thumb{background:var(--border2);border-radius:4px}
-.section::-webkit-scrollbar-thumb:hover{background:var(--accent)}
-
-.section.active-pane{display:block}
-
-@keyframes paneFadeIn{
-  from{opacity:0;transform:translateY(8px)}
-  to{opacity:1;transform:translateY(0)}
-}
+.section{padding:5rem 4.5rem;border-bottom:1px solid var(--border)}
+.section:last-child{border-bottom:none}
 .sec-eyebrow{
   font-family:var(--mono);font-size:.6rem;
   color:var(--accent);letter-spacing:.2em;text-transform:uppercase;
@@ -2310,63 +2282,34 @@ async function sendEmail(e){
   btn.disabled=false;
 }
 
-/* ═══════════════════════ TAB NAVIGATION (SINGLE-WINDOW) ═══════════════════════ */
+/* ═══════════════════════ SCROLL & NAV ═══════════════════════ */
 function observeFade(){
   const io=new IntersectionObserver(entries=>{
     entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
   },{threshold:.06});
   document.querySelectorAll('.fade-up:not(.in)').forEach(el=>io.observe(el));
 }
-
-function handleNavigation() {
-  const hash = window.location.hash || '#hero';
-  const targetId = hash.substring(1);
-  const targetPane = document.getElementById(targetId);
-  
-  if (targetPane) {
-    // Hide all section panes
-    document.querySelectorAll('#hero, .section').forEach(el => {
-      el.classList.remove('active-pane');
-    });
-    
-    // Show active pane
-    targetPane.classList.add('active-pane');
-    
-    // Update active nav link
-    document.querySelectorAll('nav ul a').forEach(a => {
-      const active = a.getAttribute('href') === hash;
-      a.classList.toggle('active', active);
-    });
-    
-    // Immediately observe animations inside this pane
-    observeFade();
-    
-    // Close mobile sidebar if open
-    const sb = document.getElementById('sidebar');
-    const hb = document.getElementById('hamburger');
-    const ov = document.getElementById('overlay');
-    if (sb && sb.classList.contains('open')) {
-      sb.classList.remove('open');
-      hb.classList.remove('open');
-      ov.classList.remove('open');
-    }
-    
-    // Skills Radar chart sizing fix for hidden elements
-    if (targetId === 'skills') {
-      setTimeout(() => {
-        const c = document.getElementById('radar-canvas');
-        if (c) {
-          c.width = c.parentNode.offsetWidth || 380;
-          c.height = c.width;
-          drawRadar();
-        }
-      }, 50);
-    }
+function setActiveNav(){
+  const ids=['hero','about','skills','activity','featured','projects','education','contact'];
+  const scrollY=window.scrollY+100;
+  let active='hero';
+  for(const id of ids){
+    const el=document.getElementById(id);
+    if(el&&el.offsetTop<=scrollY)active=id;
   }
+  document.querySelectorAll('nav ul a').forEach(a=>{
+    a.classList.toggle('active',a.getAttribute('href')==='#'+active);
+  });
 }
+window.addEventListener('scroll',setActiveNav,{passive:true});
 
-window.addEventListener('hashchange', handleNavigation);
-window.addEventListener('load', handleNavigation);
+// Auto-close sidebar on mobile nav click
+document.querySelectorAll('nav ul a').forEach(a=>{
+  a.addEventListener('click',()=>{
+    const sb=document.getElementById('sidebar');
+    if(sb && sb.classList.contains('open')) toggleSidebar();
+  });
+});
 
 /* ═══════════════════════ LOADING DOTS ═══════════════════════ */
 let dotCount=0;
@@ -2413,7 +2356,7 @@ renderSkillBars();
 
 // Observe
 observeFade();
-handleNavigation();
+setActiveNav();
 
 // Redraw radar on resize if canvas is currently visible
 window.addEventListener('resize',()=>{
