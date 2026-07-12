@@ -2537,6 +2537,14 @@
           </div>
 
           <form id="contact-form" class="form fade-up" onsubmit="sendEmail(event)">
+            <!-- Hidden Fields for EmailJS Template -->
+            <input type="hidden" name="ticket_source" value="Developer's Resume Contact Us Page" />
+            <input type="hidden" name="ticket_id" id="hidden-ticket-id" value="" />
+            <input type="hidden" name="timestamp" id="hidden-timestamp" value="" />
+            <input type="hidden" name="priority" value="High" />
+            <input type="hidden" name="category" value="Portfolio Inquiry" />
+            <input type="hidden" name="name" id="hidden-name" value="" />
+
             <div class="f-row">
               <div class="fg">
                 <label for="from_name">Your Name</label>
@@ -2545,12 +2553,17 @@
               <div class="fg">
                 <label for="from_email">Your Email</label>
                 <input type="email" id="from_email" name="from_email" placeholder="john@example.com" required />
-                <input type="hidden" name="ticket_source" value="Developer's Resume Contact Us Page" />
               </div>
             </div>
-            <div class="fg">
-              <label for="subject">Subject</label>
-              <input type="text" id="subject" name="subject" placeholder="Project Collaboration" required />
+            <div class="f-row">
+              <div class="fg">
+                <label for="phone">Your Phone</label>
+                <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" required />
+              </div>
+              <div class="fg">
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" placeholder="Project Collaboration" required />
+              </div>
             </div>
             <div class="fg">
               <label for="message">Message</label>
@@ -3347,6 +3360,11 @@ Motivated and self-driven BCA student with practical experience building MERN St
     /* ═══════════════════════ EMAIL ═══════════════════════ */
     async function sendEmail(e) {
       e.preventDefault();
+      
+      // Populate dynamic hidden fields for template
+      document.getElementById('hidden-ticket-id').value = Math.floor(100000 + Math.random() * 900000).toString();
+      document.getElementById('hidden-timestamp').value = new Date().toLocaleString();
+      document.getElementById('hidden-name').value = document.getElementById('from_name').value;
       const btn = document.getElementById('send-btn');
       const st = document.getElementById('form-status');
       btn.textContent = 'Sending…'; btn.disabled = true;
