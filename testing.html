@@ -1,0 +1,108 @@
+<!-- Support Ticket Notification Email Template -->
+<!-- Merge fields: {{name}} {{from_name}} {{from_email}} {{ticket_id}} {{timestamp}} {{phone}} {{priority}} {{category}} {{subject}} {{message}} -->
+<div style="font-family: -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; background-color: #f2f4f7; padding: 32px 16px; margin: 0;">
+    <table role="presentation" cellpadding="0" cellspacing="0" style="width: 100%; margin: 0 auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 3px rgba(16,24,40,0.08), 0 1px 2px rgba(16,24,40,0.04);">
+
+    <!-- Header -->
+      <tr>
+      <td style="background-color: #101828; padding: 8px 28px 22px 28px;">
+        <!-- Ticket status row -->
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+            <tr style="display:flex; justify-content: space-between;">
+                <td style="text-align:right; padding: 12px 0;">
+                    <span style="color:#98a2b3; font-size:12px;">Ticket ID:#{{ticket_id}} &nbsp;•&nbsp; Source {{ticket_source}}</span>
+                </td>
+                <td style="padding-bottom:12px;">
+                    <span style="display:inline-block; font-size:11px; font-weight:700; letter-spacing:0.3px; text-transform:uppercase; color:#fda29b; background-color:#3a1a17; border:1px solid #542622; padding:3px 10px; border-radius:16px;">{{priority}}</span>
+                </td>
+                <td style="vertical-align: middle;">
+                    <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background-color:#12b76a; margin-right:8px;"></span>
+                    <span style="color:#ffffff; font-size:13px; font-weight:600; letter-spacing:0.4px; text-transform:uppercase;">New Support Ticket</span>
+                </td>
+            </tr>
+            <!-- Subject -->
+            <tr>
+                <td colspan="2" style="border-top: 1px solid #344054;padding: 16px 0;">
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td style="vertical-align:top; width:44px; padding-right:12px;">
+                                <div style="width:40px; height:40px; border-radius:50%; background-color:#1d2939; text-align:center; line-height:40px; font-size:18px;">👤</div>
+                            </td>
+                            <td style="vertical-align:middle;">
+                                <div style="font-size:15px; font-weight:600; color:#ffffff;">{{from_name}}</div>
+                                <div style="font-size:13px; color:#98a2b3;">
+                                    <span style="width:50%; font-size:11px; color:#667085; letter-spacing:0.3px; padding-bottom:4px;">Email: </span>{{from_email}}
+                                </div>
+                                <div style="font-size:13px; color:#98a2b3;">
+                                    <span style="width:50%; font-size:11px; color:#667085; letter-spacing:0.3px; padding-bottom:4px;">Phone: </span>{{phone}}
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <td>
+                        
+                    </td>
+                </td>
+                <td colspan="2" style="padding-top:16px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td style="width:50%; font-size:11px; color:#667085; letter-spacing:0.3px; padding-bottom:4px;">CATEGORY</td>
+                  <td style="width:50%; font-size:11px; color:#667085; letter-spacing:0.3px; padding-bottom:4px;">RECEIVED AT</td>
+                </tr>
+                <tr>
+                  <td style="font-size:13px; color:#e4e7ec; font-weight:500;">{{category}}</td>
+                  <td style="font-size:13px; color:#e4e7ec; font-weight:500;">{{timestamp}}</td>
+                </tr>
+            </td>
+            </tr>
+            <!-- Requester -->
+        </table>
+      </td>
+    </tr>
+
+    </table>
+    <!-- Intro line -->
+    <!-- <table> -->
+        <tr>
+          <td style="padding: 20px 28px 0 28px;">
+            <p style="margin:0; font-size:14px; color:#475467; line-height:1.5;">
+              A message from <strong style="color:#101828;">{{name}}</strong> has been received. Kindly respond at your earliest convenience.
+            </p>
+          </td>
+        </tr>
+        
+            <!-- Message -->
+            <tr>
+              <td style="padding: 16px 28px 0 28px;">
+                <div style="font-size:12px; color:#98a2b3; text-transform:uppercase; letter-spacing:0.3px; margin-bottom:8px;">Message</div>
+                <div style="font-size:14px; color:#344054; line-height:1.6; background-color:#ffffff; border:1px solid #eaecf0; border-radius:8px; padding:16px;">
+                  {{message}}
+                </div>
+              </td>
+            </tr>
+            <!-- CTA -->
+            <tr>
+              <td style="padding: 24px 28px 8px 28px;">
+                <table role="presentation" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td style="border-radius:8px; background-color:#101828;">
+                      <a href="mailto:{{from_email}}" style="display:inline-block; padding:11px 22px; font-size:14px; font-weight:600; color:#ffffff; text-decoration:none; border-radius:8px;">Reply to {{from_name}}</a>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+    <!-- </table> -->
+
+
+    <!-- Footer -->
+    <tr>
+      <td style="padding: 24px 28px 28px 28px;">
+        <div style="border-top:1px solid #eaecf0; padding-top:16px; text-align:center;">
+          <div style="font-size:12px; color:#98a2b3;">Ticket <strong style="color:#667085;">#{{ticket_id}}</strong> &nbsp;•&nbsp; Created {{timestamp}} &nbsp;•&nbsp; Source {{ticket_source}}</div>
+        </div>
+      </td>
+    </tr>
+
+  </table>
+</div>

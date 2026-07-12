@@ -2482,22 +2482,22 @@
             <div class="edu-dot"></div>
             <div class="edu-year">2022 – 2025</div>
             <div class="edu-degree">Bachelor of Computer Applications (BCA)</div>
-            <div class="edu-school" id="edu-school-1">— Update via Admin Panel</div>
+            <div class="edu-school" id="edu-school-2">— Update via Admin Panel</div>
             <div class="edu-grade">Completed</div>
           </div>
           <div class="edu-item">
             <div class="edu-dot"></div>
             <div class="edu-year">2020 – 2021</div>
             <div class="edu-degree">12th Grade / Intermediate</div>
-            <div class="edu-school" id="edu-school-2">— Update via Admin Panel</div>
+            <div class="edu-school" id="edu-school-3">— Update via Admin Panel</div>
             <div class="edu-grade">Science Stream</div>
           </div>
           <div class="edu-item">
             <div class="edu-dot"></div>
-            <div class="edu-year">2019</div>
+            <div class="edu-year">2021</div>
             <div class="edu-degree">10th Grade / Matriculation</div>
-            <div class="edu-school" id="edu-school-3">— Update via Admin Panel</div>
-            <div class="edu-grade">Completed</div>
+            <div class="edu-school" id="edu-school-4">— Update via Admin Panel</div>
+            <div class="edu-grade">CBSE</div>
           </div>
         </div>
       </section>
@@ -2545,6 +2545,7 @@
               <div class="fg">
                 <label for="from_email">Your Email</label>
                 <input type="email" id="from_email" name="from_email" placeholder="john@example.com" required />
+                <input type="hidden" name="ticket_source" value="Developer's Resume Contact Us Page" />
               </div>
             </div>
             <div class="fg">
@@ -2581,20 +2582,22 @@
 
 
   <script>
-    /* ═══════════════════════ CONFIG ═══════════════════════ */
     const CFG = {
       name: "Aditya Sahu",
       tagline: "Full-Stack Web Developer",
       github: 'CodexAdi25',
-      edu1: 'Chhatrapati Shahu Ji Maharaj University',
-      edu2: 'Laughing Buddha Academy',
-      edu3: 'Raghuvansh Academy',
+      education: [
+        'Chhatrapati Shahu Ji Maharaj University',
+        'Chhatrapati Shahu Ji Maharaj University',
+        'Laughing Buddha Academy',
+        'Raghuvansh Academy'
+      ],
       whatsapp: '917985693955',
       whatsappMsg: "Hi Aditya! I saw your portfolio and would love to connect 👋",
       email: 'adityasahu.dev@gmail.com',
       linkedin: 'https://www.linkedin.com/in/adityasahu-dev1/',
       twitter: '',
-      resumeURL: 'https://raw.githubusercontent.com/CodexAdi25/codexadi25/main/Resume.tex', // Raw GitHub URL to your resume.tex
+      resumeURL: 'https://raw.githubusercontent.com/CodexAdi25/codexadi25/main/Resume.tex',
       ejPublicKey: '1a1enk0G-nfJjaAJ3',
       ejServiceId: 'service_xiwsxor',
       ejTemplateId: 'template_30xzw1h'
@@ -2631,52 +2634,50 @@
     /* ═══════════════════════ APPLY DATA ═══════════════════════ */
     function applyData(d) {
       const s = id => document.getElementById(id);
+      const setTxt = (id, val) => { const el = s(id); if (el && val) el.textContent = val; };
+      const setHref = (id, val) => { const el = s(id); if (el && val) el.href = val; };
+      const setHtml = (id, val) => { const el = s(id); if (el && val) el.innerHTML = val; };
+
       if (d.name) {
-        s('sb-name').textContent = d.name;
-        s('hero-name-line1').textContent = d.name.split(' ')[0] || d.name;
-        s('code-name').textContent = d.name;
-        s('av-placeholder').textContent = (d.name[0] || 'A').toUpperCase();
+        setTxt('sb-name', d.name);
+        setTxt('hero-name-line1', d.name.split(' ')[0] || d.name);
+        setTxt('code-name', d.name);
+        setTxt('av-placeholder', (d.name[0] || 'A').toUpperCase());
       }
-      if (d.role) { s('sb-role').textContent = d.role; }
-      if (d.tagline) { s('hero-tagline').textContent = d.tagline; }
-      if (d.desc) { s('hero-desc').textContent = d.desc; }
+      setTxt('sb-role', d.role);
+      setTxt('hero-tagline', d.tagline);
+      setTxt('hero-desc', d.desc);
+
       if (d.github) {
-        const g = d.github;
-        s('hero-handle').textContent = g;
-        s('code-handle').textContent = g;
-        s('footer-handle').textContent = g;
-        s('gh-profile-label').textContent = `github.com/${g}`;
-        s('gh-profile-link').href = `https://github.com/${g}`;
-        s('footer-gh').href = `https://github.com/${g}`;
-        s('gh-soc').href = `https://github.com/${g}`;
-        s('cm-gh').href = `https://github.com/${g}`;
-        s('cm-gh-label').textContent = `github.com/${g}`;
-        CFG.github = g;
+        const gh = `https://github.com/${d.github}`;
+        ['hero-handle', 'code-handle', 'footer-handle'].forEach(id => setTxt(id, d.github));
+        ['gh-profile-label', 'cm-gh-label'].forEach(id => setTxt(id, `github.com/${d.github}`));
+        ['gh-profile-link', 'footer-gh', 'gh-soc', 'cm-gh'].forEach(id => setHref(id, gh));
+        CFG.github = d.github;
       }
       if (d.email) {
-        s('mail-soc').href = `mailto:${d.email}`;
-        s('cm-email').href = `mailto:${d.email}`;
-        s('cm-email-label').textContent = d.email;
+        ['mail-soc', 'cm-email'].forEach(id => setHref(id, `mailto:${d.email}`));
+        setTxt('cm-email-label', d.email);
         CFG.email = d.email;
       }
       if (d.whatsapp) {
         CFG.whatsapp = d.whatsapp;
-        const wa = `https://wa.me/${d.whatsapp}?text=${encodeURIComponent(CFG.whatsappMsg)}`;
-        s('wa-big').href = wa;
+        setHref('wa-big', `https://wa.me/${d.whatsapp}?text=${encodeURIComponent(CFG.whatsappMsg)}`);
       }
-      if (d.linkedin) { s('li-soc').href = d.linkedin; }
-      if (d.twitter) { s('tw-soc').href = d.twitter; }
-      if (d.resumeURL) { CFG.resumeURL = d.resumeURL; }
-      if (d.edu1) { s('edu-school-1').textContent = d.edu1; }
-      if (d.edu2) { s('edu-school-2').textContent = d.edu2; }
-      if (d.edu3) { s('edu-school-3').textContent = d.edu3; }
-      if (d.about1) { s('about-p1').innerHTML = d.about1; }
-      if (d.about2) { s('about-p2').innerHTML = d.about2; }
-      if (d.location) { 
-        s('hero-location').textContent = d.location; 
-        s('code-location').textContent = d.location; 
-        const sbLoc = s('sb-location');
-        if (sbLoc) sbLoc.textContent = `📍 ${d.location}`;
+      setHref('li-soc', d.linkedin);
+      setHref('tw-soc', d.twitter);
+      if (d.resumeURL) CFG.resumeURL = d.resumeURL;
+
+      if (d.education) {
+        d.education.forEach((edu, i) => setTxt(`edu-school-${i + 1}`, edu));
+      }
+      
+      setHtml('about-p1', d.about1);
+      setHtml('about-p2', d.about2);
+
+      if (d.location) {
+        ['hero-location', 'code-location'].forEach(id => setTxt(id, d.location));
+        setTxt('sb-location', `📍 ${d.location}`);
       }
       if (d.dob) {
         const sbDob = s('sb-dob');
@@ -2684,213 +2685,7 @@
           sbDob.textContent = `🎂 ${d.dob}`;
           sbDob.style.display = 'inline';
         }
-        const cdDob = s('code-dob');
-        if (cdDob) cdDob.textContent = d.dob;
-      }
-    }
-
-    /* ═══════════════════════ AUTOMATED LINKEDIN & RESUME CRAWLER ═══════════════════════ */
-    async function fetchLinkedInAuto() {
-      if (!CFG.linkedin) return;
-      console.log('Initiating automatic profile hydration from LinkedIn...');
-
-      const urlInput = CFG.linkedin;
-      const proxies = [
-        `https://api.allorigins.win/get?url=${encodeURIComponent(urlInput)}`,
-        `https://corsproxy.io/?url=${encodeURIComponent(urlInput)}`,
-        `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(urlInput)}`
-      ];
-
-      let html = '';
-      let success = false;
-
-      for (let i = 0; i < proxies.length; i++) {
-        try {
-          console.log(`Auto-fetching LinkedIn via proxy ${i+1}/${proxies.length}...`);
-          const res = await fetch(proxies[i]);
-          if (res.ok) {
-            const data = await res.json();
-            html = data.contents || data;
-            if (html && html.length > 200) {
-              success = true;
-              break;
-            }
-          }
-        } catch (e) {
-          console.warn(`Proxy ${i+1} failed:`, e);
-        }
-      }
-
-      if (!success) {
-        console.warn('CORS proxies blocked LinkedIn. Hydrating handles from URL & falling back to Resume.tex...');
-        const handleMatch = urlInput.match(/in\/([a-zA-Z0-9_\-]+)/);
-        if (handleMatch) {
-          const handle = handleMatch[1];
-          const cleanName = handle.split('-')
-            .map(w => w.charAt(0).toUpperCase() + w.slice(1))
-            .join(' ')
-            .replace(/\d+/, '');
-          
-          if (cleanName && cleanName.length > 3) {
-            updateFieldIfEmptyText('sb-name', cleanName);
-            updateFieldIfEmptyText('hero-name-line1', cleanName.split(' ')[0]);
-            updateFieldIfEmptyText('code-name', cleanName);
-          }
-        }
-        await syncFromLocalTexAuto();
-        return;
-      }
-
-      try {
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(html, 'text/html');
-
-        const titleTag = doc.querySelector('title')?.textContent || '';
-        const ogTitle = doc.querySelector('meta[property="og:title"]')?.getAttribute('content') || '';
-        const ogDesc = doc.querySelector('meta[property="og:description"]')?.getAttribute('content') || '';
-        const ogImage = doc.querySelector('meta[property="og:image"]')?.getAttribute('content') || '';
-
-        let name = '';
-        let role = '';
-
-        if (ogTitle) {
-          const parts = ogTitle.split(/ - | \| | \u2013 | \u2014 /);
-          name = parts[0]?.trim();
-          role = parts[1]?.trim();
-        } else if (titleTag) {
-          const parts = titleTag.split(/ - | \| | \u2013 | \u2014 /);
-          name = parts[0]?.trim();
-          role = parts[1]?.trim();
-        }
-
-        if (name) {
-          const cleanName = name.replace(/\s*\(.*\)/g, '').trim();
-          updateFieldIfEmptyText('sb-name', cleanName);
-          updateFieldIfEmptyText('hero-name-line1', cleanName.split(' ')[0] || cleanName);
-          updateFieldIfEmptyText('code-name', cleanName);
-          const avPh = document.getElementById('av-placeholder');
-          if (avPh) avPh.textContent = (cleanName[0] || 'A').toUpperCase();
-        }
-
-        if (role) {
-          updateFieldIfEmptyText('sb-role', role);
-          updateFieldIfEmptyText('hero-tagline', role);
-        }
-
-        if (ogDesc) {
-          updateFieldIfEmptyText('hero-desc', ogDesc.length > 180 ? ogDesc.slice(0, 180) + '...' : ogDesc);
-          updateFieldIfEmptyText('about-p1', ogDesc);
-        }
-
-        if (ogImage) {
-          const img = document.getElementById('av-img');
-          const ph = document.getElementById('av-placeholder');
-          if (img) {
-            img.src = ogImage;
-            img.style.display = 'block';
-            if (ph) ph.style.display = 'none';
-          }
-        }
-
-        // Search education inside public profile HTML
-        const schools = [];
-        const schoolElements = doc.querySelectorAll('.education__school-name, .education__school, [data-section="education"] h3');
-        schoolElements.forEach(el => {
-          const val = el.textContent.trim();
-          if (val.length > 5 && !schools.includes(val)) schools.push(val);
-        });
-
-        if (schools.length < 2) {
-          const textContent = doc.body?.textContent || html;
-          const uniRegex = /([A-Za-z\s]+University[A-Za-z\s,]{0,30}|[A-Za-z\s]+Academy[A-Za-z\s,]{0,30}|[A-Za-z\s]+College[A-Za-z\s,]{0,30})/gi;
-          let m;
-          while ((m = uniRegex.exec(textContent)) !== null && schools.length < 3) {
-            const uni = m[1].replace(/[\r\n\t]+/g, ' ').replace(/\s+/g, ' ').trim();
-            if (uni.length > 8 && !schools.includes(uni)) schools.push(uni);
-          }
-        }
-
-        if (schools.length > 0) updateFieldIfEmptyText('edu-school-1', schools[0]);
-        if (schools.length > 1) updateFieldIfEmptyText('edu-school-2', schools[1]);
-        if (schools.length > 2) updateFieldIfEmptyText('edu-school-3', schools[2]);
-
-        console.log('LinkedIn auto-hydration successful!');
-      } catch (err) {
-        console.error('Error parsing LinkedIn auto-hydration details:', err);
-      }
-
-      await syncFromLocalTexAuto();
-    }
-
-    async function syncFromLocalTexAuto() {
-      let tex = '';
-      try {
-        const res = await fetch('Resume.tex');
-        if (res.ok) tex = await res.text();
-      } catch (e) {}
-
-      if (!tex && CFG.resumeURL) {
-        try {
-          const res = await fetch(CFG.resumeURL);
-          if (res.ok) tex = await res.text();
-        } catch (e) {}
-      }
-
-      if (!tex) return;
-
-      try {
-        console.log('Auto-syncing additional details from local LaTeX resume...');
-        
-        // Parse DOB
-        const dobMatch = tex.match(/\\textbf\{DOB:\}\s*&\s*([^\\\r\n&]+)/i) || tex.match(/\\textbf\{Date of Birth:\}\s*&\s*([^\\\r\n&]+)/i);
-        if (dobMatch) {
-          const dobVal = dobMatch[1].trim();
-          CFG.dob = dobVal;
-          const dobEl = document.getElementById('code-dob');
-          if (dobEl) dobEl.textContent = dobVal;
-          const sbDob = document.getElementById('sb-dob');
-          if (sbDob) {
-            sbDob.textContent = `🎂 ${dobVal}`;
-            sbDob.style.display = 'inline';
-          }
-        }
-
-        // Parse Education
-        const eduBlocks = [];
-        const eduRegex = /\\textbf\{([^\}]+)\}\s*\\hfill\s*\\textit\{([^\}]+)\}/g;
-        let match;
-        while ((match = eduRegex.exec(tex)) !== null) {
-          eduBlocks.push({ school: match[1].trim(), degree: match[2].trim() });
-        }
-
-        if (eduBlocks.length > 0) {
-          updateFieldIfEmptyText('edu-school-1', eduBlocks[0].school);
-          if (eduBlocks.length > 1) updateFieldIfEmptyText('edu-school-2', eduBlocks[1].school);
-          if (eduBlocks.length > 2) updateFieldIfEmptyText('edu-school-3', eduBlocks[2].school);
-        }
-
-        // Parse Overview
-        const overviewSection = tex.split(/\\section\*\{Overview\}/i)[1] || tex.split(/\\section\*\{Summary\}/i)[1];
-        if (overviewSection) {
-          const overviewText = overviewSection.split(/\\section/)[0]
-            .replace(/\\vspace\{[^}]+\}/g, '')
-            .replace(/\\setstretch\{[^}]+\}/g, '')
-            .replace(/[\n\r]+/g, ' ')
-            .trim();
-          if (overviewText) {
-            updateFieldIfEmptyText('hero-desc', overviewText.length > 180 ? overviewText.slice(0, 180) + '...' : overviewText);
-            updateFieldIfEmptyText('about-p1', overviewText);
-          }
-        }
-      } catch (err) {
-        console.error('Error auto-syncing LaTeX content:', err);
-      }
-    }
-
-    function updateFieldIfEmptyText(id, value) {
-      const el = document.getElementById(id);
-      if (el && (el.textContent.trim() === '' || el.textContent.includes('Update via') || el.textContent.includes('—'))) {
-        el.textContent = value;
+        setTxt('code-dob', d.dob);
       }
     }
 
@@ -3624,12 +3419,12 @@ Motivated and self-driven BCA student with practical experience building MERN St
     // Initialise with config defaults
     applyData(CFG);
 
-    // Load saved data
-    const savedData = loadData();
-    if (Object.keys(savedData).length > 0) applyData(savedData);
+    // Load saved data (Disabled - Plotting CFG strictly)
+    // const savedData = loadData();
+    // if (Object.keys(savedData).length > 0) applyData(savedData);
 
-    // Trigger automatic background profile fetch from LinkedIn & Resume.tex
-    fetchLinkedInAuto();
+    // Trigger automatic background profile fetch from LinkedIn & Resume.tex (Disabled)
+    // fetchLinkedInAuto();
 
     // Init GitHub links
     const ghUrl = `https://github.com/${CFG.github}`;
